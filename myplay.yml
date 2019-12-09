@@ -1,0 +1,22 @@
+---
+- hosts: "{{ host }}"
+  connection: local
+  gather_facts: True
+  #become: yes
+  #become_method: sudo
+  tasks:
+  - name: server reachability
+    ping:
+    register: pingout
+  - debug: var=pingout
+  - name: Facts gathering
+    setup:
+    register: factout
+  - debug:
+       msg: " {{ factout.ansible_facts.ansible_architecture }}"
+
+#  - debug:
+#       var: "{{ var1 }}"
+
+  - debug:
+       msg: "{{ tower_job_id }}"
