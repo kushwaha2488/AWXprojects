@@ -1,5 +1,5 @@
 ---
-- hosts: "{{ host }}"
+- hosts: localhost 
   connection: local
   gather_facts: True
   #become: yes
@@ -14,9 +14,6 @@
     register: factout
   - debug:
        msg: " {{ factout.ansible_facts.ansible_architecture }}"
-
-#  - debug:
-#       var: "{{ var1 }}"
 
   - debug:
        msg: "{{ tower_job_id }}"
